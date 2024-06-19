@@ -8,8 +8,11 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\FactorController;
 use App\Http\Controllers\LabelController;
 use App\Http\Controllers\MessageController;
-
-
+use App\Http\Controllers\NoteController;
+use App\Http\Controllers\TaskController;
+use App\Http\Controllers\TeamController;
+use App\Http\Controllers\TicketController;
+use App\Http\Controllers\WarrantyController;
 
 Route::post('login')->controller(UserController::class,'login')->name('login');
 Route::get('login',function(){
