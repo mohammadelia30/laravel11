@@ -4,12 +4,18 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Mockery\Matcher\Not;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasMedia
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable,InteractsWithMedia;
 
     /**
      * The attributes that are mass assignable.
@@ -17,9 +23,15 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
+        'first_name',
+        'last_name',
+        'phone_number',
+        'status',
+        'gender',
+        'address',
+        'comment',
         'password',
+        'email'
     ];
 
     /**
@@ -33,15 +45,36 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the attributes that should be cast.
+     * The attributes that should be cast.
      *
-     * @return array<string, string>
+     * @var array<string, string>
      */
-    protected function casts(): array
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
+    ];
+    public function orders(): HasMany
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+        return $this->hasMany(Order::class);
+    }
+    public function teams(): BelongsToMany
+    {
+        return $this->belongsToMany(Team::class);
+    }
+    public function tasks(): MorphToMany
+    {
+        return $this->morphedByMany(Task::class, 'taskable');
+    }
+    public function notes(): HasMany
+    {
+        return $this->hasMany(Not::class);
+    }
+    public function tickets(): HasMany
+    {
+        return $this->hasMany(Ticket::class);
+    }
+    public function labels(): MorphToMany
+    {
+        return $this->morphedByMany(Label::class, 'labelables');
     }
 }
