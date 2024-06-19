@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->string('name',20);
+            $table->string('price',20);
+            $table->string('color',10);
+            $table->enum('status',['موجود','ناموجود','به زودی']);
+            $table->integer('number')->default(0);
+            $table->text('comment')->nullable();
             $table->timestamps();
         });
     }

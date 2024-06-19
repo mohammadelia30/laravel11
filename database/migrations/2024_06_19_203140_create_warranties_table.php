@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('warranties', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->integer('length');
+            $table->date('started_at');
+            $table->date('ended_at');
+            $table->unsignedBigInteger('product_id');
+            $table->unique('product_id');
             $table->timestamps();
         });
     }

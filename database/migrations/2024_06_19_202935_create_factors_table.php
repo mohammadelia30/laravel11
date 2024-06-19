@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('factors', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('order_id');
+            $table->unsignedBigInteger('warranty_id');
+            $table->unique(['order_id','warranty_id']);
+            $table->integer('total_price');
+            $table->integer('total_products');
             $table->timestamps();
         });
     }
