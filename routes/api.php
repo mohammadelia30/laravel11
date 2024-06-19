@@ -14,7 +14,7 @@ use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\WarrantyController;
 
-Route::post('login')->controller(UserController::class,'login')->name('login');
+Route::post('login',[UserController::class ,'login'])->name('login');
 Route::get('login',function(){
     return '401';
 });
