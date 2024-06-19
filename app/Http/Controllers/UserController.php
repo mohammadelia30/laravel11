@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UpdateUserRequest;
 use App\Http\Requests\UsersRequest;
 use App\Jobs\SendMail;
+use App\Jobs\SendMails;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
@@ -68,7 +69,7 @@ class UserController extends Controller
         ])->toArray());
         $users->assignRole('super admin');
         $users->teams()->attach($request->teams_id);
-        SendMail::dispatch($first_name,$last_name,$email);
+        SendMails::dispatch($first_name,$last_name,$email);
         return response()->json($users);
     }
     public function edit(UpdateUserRequest $request, $id)
