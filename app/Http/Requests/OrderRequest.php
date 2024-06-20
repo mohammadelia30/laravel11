@@ -22,8 +22,8 @@ class OrderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "sname" => "required|min:3|max:50",
-            'gname' => 'required|min:3|max:50',
+            "sender_name" => "required|min:3|max:50",
+            'receiver' => 'required|min:3|max:50',
             'code' => 'required|min:1|max:10',
             'date' => 'required',
             'time' => 'required',
@@ -32,12 +32,12 @@ class OrderRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'sname.required'=> 'نام فرستنده الزامی است',
-            'sname.min'=> 'نام فرستنده کمتر از ۳ حرف است',
-            'sname.max'=> 'نام فرستنده بیش از حد مجاز است',
-            'gname.required'=> 'نام گیرنده الزامی است',
-            'gname.min'=> 'نام گیرنده کمتر از ۳ حرف است',
-            'gname.max'=> 'نام گیرنده بیش از حد مجاز است',
+            'sender_name.required'=> 'نام فرستنده الزامی است',
+            'sender_name.min'=> 'نام فرستنده کمتر از ۳ حرف است',
+            'sender_name.max'=> 'نام فرستنده بیش از حد مجاز است',
+            'receiver.required'=> 'نام گیرنده الزامی است',
+            'receiver.min'=> 'نام گیرنده کمتر از ۳ حرف است',
+            'receiver.max'=> 'نام گیرنده بیش از حد مجاز است',
             'cond.required'=>'کد سفارش الزامی است',
             'code.min'=> 'کد سفارش باید حداقل شامل یک رقم باشد',
             'code.max'=> 'کد سفارش بیش از حد مجاز می باشد',
