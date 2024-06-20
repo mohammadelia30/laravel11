@@ -12,10 +12,11 @@ use Illuminate\Notifications\Notifiable;
 use Mockery\Matcher\Not;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements HasMedia
 {
-    use HasFactory, Notifiable,InteractsWithMedia;
+    use HasFactory, Notifiable,InteractsWithMedia,HasRoles;
 
     /**
      * The attributes that are mass assignable.

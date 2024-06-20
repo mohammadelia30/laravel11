@@ -2,9 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Factor;
 use App\Models\Label;
-use App\Models\Lable;
 use App\Models\Message;
 use App\Models\Note;
 use App\Models\Order;
@@ -17,21 +15,22 @@ use App\Models\Warranty;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class Factory_seeeder extends Seeder
+class FactorySeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        $supur_admin = User::factory(["first_name" => 'mohammad',
+       $super_admin = User::factory(["first_name" => 'mohammad',
             "last_name" => 'eliasy',
             'phone_number'=>'09022219431',
             "password"=>'wwww1234',
             "status" =>'ویژه',
             'email' =>'mohammadelia30@gmail.com',
-            "gender" =>'آقا'])->create();
-        $supur_admin->assignRole('super admin');
+            "gender" =>'آقا'
+        ])->create();
+        $super_admin->assignRole('super admin');;
         $users = User::factory()
             ->has(Order::factory()->has(Product::factory()
                 ->has(Warranty::factory()->count(2))
