@@ -60,7 +60,7 @@ Route::middleware('auth:sanctum')->prefix('lable')->controller(LabelController::
     Route::put('{id}','edit')->middleware('permission:lable edit')->name('edit');
     Route::delete('delete/{id}','delete')->middleware('permission:lable delete')->name('delete');
 });
-Route::middleware('auth:sanctum')->prefix('message')->controller(NoteController::class)->as('message.')->group(function(){
+Route::middleware('auth:sanctum')->prefix('message')->controller(MessageController::class)->as('message.')->group(function(){
     Route::get('index/{id?}','index')->middleware('permission:message index')->name('index');
     Route::post('create','store')->middleware('permission:message create')->name('create');
     Route::put('{id}','edit')->name('edit');
