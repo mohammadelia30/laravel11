@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Mail\Welcome;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -29,6 +30,6 @@ class SendMails implements ShouldQueue
      */
     public function handle(): void
     {
-        Mail::to($this->email)->send(new Welcome($this->first_name, $this->last_name));
+        Mail::to($this->email)->send(new Welcome($this->first_name,$this->last_name));
     }
 }
