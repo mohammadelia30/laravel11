@@ -23,7 +23,8 @@ class FactorController extends Controller
         return response()->json($factor);
     }
     public function edit(FactorRequest $request){
-        $factor = Factor::update($request->toArray());
+        $factor = new Factor();
+        $factor->updated($request->toArray());
         return response()->json($factor);
     }
     public function delete($id)

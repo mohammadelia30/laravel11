@@ -26,8 +26,8 @@ class LabelController extends Controller
 
     public function edit(LabelRequest $request)
     {
-        $factor = Label::update($request->toArray());
-        return response()->json($factor);
+        $label= Label::updated($request->toArray()) ;
+        return response()->json($label);
     }
 
     public function delete($id)

@@ -23,7 +23,7 @@ class TeamController extends Controller
         return response()->json($factor);
     }
     public function edit(TeamRequest $request){
-        $factor = Team::update($request->toArray());
+        $factor = Team::updated($request->toArray());
         return response()->json($factor);
     }
     public function delete($id)

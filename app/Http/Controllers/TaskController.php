@@ -23,7 +23,7 @@ class TaskController extends Controller
         return response()->json($factor);
     }
     public function edit(TaskRequest $request){
-        $task = Task::update($request->toArray());
+        $task = Task::updated($request->toArray());
         return response()->json($task);
     }
     public function delete($id)

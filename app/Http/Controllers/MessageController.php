@@ -12,7 +12,7 @@ class MessageController extends Controller
     public function index($id = null)
     {
         if ($id) {
-            $factor = Message::with('order','warranty')->find($id);
+            $factor = Message::with('product','warranty')->find($id);
         } else {
             $factor = Message::paginate(10);
         }
@@ -24,7 +24,7 @@ class MessageController extends Controller
         return response()->json($factor);
     }
     public function edit(MessageRequest $request){
-        $factor = Message::update($request->toArray());
+        $factor = Message::updated($request->toArray());
         return response()->json($factor);
     }
     public function delete($id)

@@ -23,7 +23,7 @@ class WarrantyController extends Controller
         return response()->json($factor);
     }
     public function edit(WarrantyRequest $request){
-        $factor = Warranty::update($request->toArray());
+        $factor = Warranty::updated($request->toArray());
         return response()->json($factor);
     }
     public function delete($id)

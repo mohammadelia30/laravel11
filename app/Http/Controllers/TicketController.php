@@ -23,7 +23,7 @@ class TicketController extends Controller
         return response()->json($factor);
     }
     public function edit(TicketRequest $request){
-        $factor = Ticket::update($request->toArray());
+        $factor = Ticket::updated($request->toArray());
         return response()->json($factor);
     }
     public function delete($id)
